@@ -13,17 +13,6 @@ body {
   z-index: 1;
 }
 
-header {
-  font-family: "Modak", cursive;
-  position: absolute;
-  right: 0;
-  top: 1.2rem;
-  writing-mode: vertical-rl;
-  text-orientation: sideways;
-  font-size: 20vh;
-  color: #ffffff80;
-}
-
 #matter-canvas {
   width: 100%;
   height: 100%;
@@ -32,13 +21,16 @@ header {
 }
 
 #boba-spout,
-#boba-cup {
+#boba-cup,
+#table,
+#cat-boba,
+#shelf {
   position: absolute;
   pointer-events: none;
 }
 
 #boba-cup {
-  width: 212px;
+  width: 220px;
 }
 
 #boba-spout {
@@ -47,4 +39,25 @@ header {
   z-index: -1;
   width: 150px;
   transform: translate(-3px, 0);
+}
+
+#table {
+  z-index: -2;
+  width: 1000px;
+  top: 400px;
+  left: 650px;
+}
+
+#cat-boba {
+  z-index: -1;
+  width: 169px;
+  top: 10px;
+  left: 500px;
+}
+
+#shelf {
+  z-index: -1;
+  width: 450px;
+  top: 290px;
+  left: 350px;
 }

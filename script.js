@@ -80,7 +80,7 @@ window.addEventListener("DOMContentLoaded", () => {
   function BobaCup() {
     const bobaImg = document.querySelector("#boba-cup");
     this.cx = canvasWidth * 0.5;
-    this.cy = canvasHeight * 0.8;
+    this.cy = canvasHeight * 0.53;
     const thickness = 20;
     const wallColor = "#000000000";
 
@@ -131,7 +131,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   let isDragging = false;
 
-  Events.on(mouseConstraint, "startdrag", (e) => {
+  Events.on(mouseConstraint, "mousedown", (e) => {
     isDragging = true;
   });
 
