@@ -1,16 +1,50 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+html,
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #bd640b;
+  position: relative;
+  z-index: 1;
 }
 
-body {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  display: flex;
-  justify-content: center;
-  margin-top: 10vh;
+header {
+  font-family: "Modak", cursive;
+  position: absolute;
+  right: 0;
+  top: 1.2rem;
+  writing-mode: vertical-rl;
+  text-orientation: sideways;
+  font-size: 20vh;
+  color: #ffffff80;
+}
+
+#matter-canvas {
+  width: 100%;
+  height: 100%;
+  filter: url(#gooey);
+  flex-shrink: 0;
+}
+
+#boba-spout,
+#boba-cup {
+  position: absolute;
+  pointer-events: none;
+}
+
+#boba-cup {
+  width: 200px;
+}
+
+#boba-spout {
+  left: 0;
+  top: 8px;
+  z-index: -1;
+  width: 150px;
+  transform: translate(-3px, 0);
 }
