@@ -181,28 +181,33 @@ window.addEventListener("DOMContentLoaded", () => {
     cup.setPosition({ x: canvasWidth * 0.5, y: canvasHeight * 0.8 });
   });
 
-  //boba
-  // Function to create multiple boba
-  function createMultipleBoba(count) {
-    for (let i = 0; i < count; i++) {
-      // Randomize position for each boba
-      let x = Math.random() * 400 + 50; // Adjust range based on your canvas size
-      let y = Math.random() * 200 + 100; // Adjust range based on your canvas size
-
-      let ball = Bodies.circle(x, y, 8, {
-        render: {
-          fillStyle: "#000000",
-          strokeStyle: "black",
-          lineWidth: 1,
-        },
-      });
-
-      Composite.add(engine.world, [ball]);
-    }
+  function createBoba(x, y) {
+    const ball = Bodies.circle(x, y, 10, {
+      render: {
+        fillStyle: "#1a1a1a",
+        strokeStyle: "#000000",
+        lineWidth: 2,
+      },
+      density: 0.9,
+      restitution: 0.1,
+      friction: 0.1,
+      frictionAir: 0.001,
+    });
+    Composite.add(engine.world, [ball]);
   }
 
-  // Example: Create 20 boba
-  createMultipleBoba(20);
+  Events.on(runner, "tick", () => {
+    if (Math.random() < 0.05) {
+      createBoba(580, 180);
+    }
+    createLiquid();
+    for (let i = circles.length - 1; i >= 0; i--) {
+      if (circles[i].position.y - circles[i].circleRadius > canvasHeight) {
+        Composite.remove(engine.world, circles[i]);
+        circles.splice(i, 1);
+      }
+    }
+  });
 });
 
 function randomNumBetween(min, max) {
