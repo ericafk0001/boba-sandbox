@@ -21,7 +21,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let engine, render, runner, mouse, mouseConstraint;
 
   let circles = [];
-  let glass;
+  let cup;
 
   function init() {
     engine = Engine.create({
@@ -70,7 +70,7 @@ window.addEventListener("DOMContentLoaded", () => {
       density: 1,
       frictionAir: 0,
       restitution: 0.7,
-      render: { fillStyle: "#edcfaf" },
+      render: { fillStyle: "#e8cdb0" },
     });
     Body.applyForce(body, body.position, { x: 1, y: 0 });
     Composite.add(engine.world, body);
@@ -127,13 +127,25 @@ window.addEventListener("DOMContentLoaded", () => {
 
   init();
   resizeFilter();
-  glass = new BobaCup();
+  cup = new BobaCup();
 
-  Events.on(mouseConstraint, "mousemove", (e) => {
-    glass.setPosition({
-      x: e.mouse.position.x,
-      y: e.mouse.position.y,
-    });
+  let isDragging = false;
+
+  Events.on(mouseConstraint, "startdrag", (e) => {
+    isDragging = true;
+  });
+
+  Events.on(mouseConstraint, "enddrag", (e) => {
+    isDragging = false;
+  });
+
+  Events.on(engine, "beforeUpdate", () => {
+    if (isDragging && mouseConstraint.mouse.button === 0) {
+      cup.setPosition({
+        x: mouseConstraint.mouse.position.x,
+        y: mouseConstraint.mouse.position.y,
+      });
+    }
   });
 
   Events.on(runner, "tick", (e) => {
@@ -166,7 +178,7 @@ window.addEventListener("DOMContentLoaded", () => {
     render.canvas.height = canvasHeight;
     resizeFilter();
 
-    glass.setPosition({ x: canvasWidth * 0.5, y: canvasHeight * 0.8 });
+    cup.setPosition({ x: canvasWidth * 0.5, y: canvasHeight * 0.8 });
   });
 });
 
