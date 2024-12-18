@@ -180,6 +180,29 @@ window.addEventListener("DOMContentLoaded", () => {
 
     cup.setPosition({ x: canvasWidth * 0.5, y: canvasHeight * 0.8 });
   });
+
+  //boba
+  // Function to create multiple boba
+  function createMultipleBoba(count) {
+    for (let i = 0; i < count; i++) {
+      // Randomize position for each boba
+      let x = Math.random() * 400 + 50; // Adjust range based on your canvas size
+      let y = Math.random() * 200 + 100; // Adjust range based on your canvas size
+
+      let ball = Bodies.circle(x, y, 8, {
+        render: {
+          fillStyle: "#000000",
+          strokeStyle: "black",
+          lineWidth: 1,
+        },
+      });
+
+      Composite.add(engine.world, [ball]);
+    }
+  }
+
+  // Example: Create 20 boba
+  createMultipleBoba(20);
 });
 
 function randomNumBetween(min, max) {
