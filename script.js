@@ -221,7 +221,6 @@ window.addEventListener("DOMContentLoaded", () => {
       }, 1000);
     }
 
-    createLiquid();
     for (let i = circles.length - 1; i >= 0; i--) {
       if (circles[i].position.y - circles[i].circleRadius > canvasHeight) {
         Composite.remove(engine.world, circles[i]);
@@ -230,8 +229,50 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  //ice
+  let iceArray = [];
+
+  function createIce(x, y) {
+    const size = 15;
+    const ice = Bodies.rectangle(x, y, size, size, {
+      render: {
+        fillStyle: "rgba(220, 240, 255, 0.8)", // Translucent light blue
+        strokeStyle: "#ffffff",
+        lineWidth: 1,
+      },
+      density: 0.9,
+      restitution: 0.3, // bouncy
+      friction: 0.1,
+      frictionAir: 0.001,
+    });
+    Composite.add(engine.world, [ice]);
+    iceArray.push(ice); // add to array
+  }
+
+  Events.on(runner, "tick", () => {
+    const targetX = 1618;
+    const targetY = 350;
+    const threshold = 50;
+
+    if (
+      Math.abs(cup.cx - targetX) < threshold &&
+      Math.abs(cup.cy - targetY) < threshold
+    ) {
+      if (Math.random() < 0.05) {
+        createIce(1618, 360);
+      }
+    }
+
+    for (let i = iceArray.length - 1; i >= 0; i--) {
+      if (iceArray[i].position.y > canvasHeight) {
+        Composite.remove(engine.world, iceArray[i]);
+        iceArray.splice(i, 1);
+      }
+    }
+  });
+
   // function createCricle() {
-  //   const point = Bodies.circle(575, 400, 20);
+  //   const point = Bodies.circle(1618, 350, 20);
   //   Composite.add(engine.world, [point]);
   // }
 

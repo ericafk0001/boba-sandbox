@@ -25,7 +25,8 @@ body {
 #table,
 #cat-boba,
 #shelf,
-#angry {
+#angry,
+#ice {
   position: absolute;
   pointer-events: none;
 }
@@ -79,4 +80,11 @@ body {
   visibility: visible;
   opacity: 1;
   transition: opacity 1s ease, visibility 0s linear 0s;
+}
+
+#ice {
+  z-index: -1;
+  width: 610px;
+  top: 15px;
+  left: 1300px;
 }
