@@ -24,7 +24,8 @@ body {
 #boba-cup,
 #table,
 #cat-boba,
-#shelf {
+#shelf,
+#angry {
   position: absolute;
   pointer-events: none;
 }
@@ -60,4 +61,22 @@ body {
   width: 450px;
   top: 290px;
   left: 350px;
+}
+
+#angry {
+  z-index: -1;
+  width: 50px;
+  top: 67px;
+  left: 636px;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease, visibility 0s linear 1s;
+}
+
+#angry.show {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 1s ease, visibility 0s linear 0s;
 }

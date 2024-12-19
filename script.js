@@ -196,10 +196,31 @@ window.addEventListener("DOMContentLoaded", () => {
     Composite.add(engine.world, [ball]);
   }
 
+  const angry = document.getElementById("angry");
+
   Events.on(runner, "tick", () => {
-    if (Math.random() < 0.05) {
-      createBoba(580, 180);
+    // Define the target area where boba should generate
+    const targetX = 578;
+    const targetY = 380;
+    const threshold = 50;
+
+    // Check if cup is in position
+    if (
+      Math.abs(cup.cx - targetX) < threshold &&
+      Math.abs(cup.cy - targetY) < threshold
+    ) {
+      if (Math.random() < 0.05) {
+        createBoba(580, 180);
+        angry.style.display = "block";
+        setTimeout(() => angry.classList.add("show"), 5);
+      }
+    } else {
+      angry.classList.remove("show");
+      setTimeout(() => {
+        angry.style.display = "none";
+      }, 1000);
     }
+
     createLiquid();
     for (let i = circles.length - 1; i >= 0; i--) {
       if (circles[i].position.y - circles[i].circleRadius > canvasHeight) {
@@ -208,6 +229,13 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
+
+  // function createCricle() {
+  //   const point = Bodies.circle(575, 400, 20);
+  //   Composite.add(engine.world, [point]);
+  // }
+
+  // createCricle();
 });
 
 function randomNumBetween(min, max) {
