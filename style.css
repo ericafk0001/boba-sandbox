@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chewy&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 html,
 body {
@@ -26,7 +26,9 @@ body {
 #cat-boba,
 #shelf,
 #angry,
-#ice {
+#ice,
+#frame,
+#frame-back {
   position: absolute;
   pointer-events: none;
 }
@@ -87,4 +89,29 @@ body {
   width: 610px;
   top: 15px;
   left: 1300px;
+}
+
+#frame {
+  z-index: -1;
+  width: 510px;
+  top: 40px;
+  left: 835px;
+}
+
+#frame-back {
+  background-color: white;
+  z-index: -1;
+  width: 440px;
+  height: 248px;
+  top: 73px;
+  left: 870px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+#frame-back {
+  font-family: "Chewy", "Times New Roman", Times, serif;
+  font-size: 34px;
 }
