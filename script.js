@@ -236,7 +236,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const size = 15;
     const ice = Bodies.rectangle(x, y, size, size, {
       render: {
-        fillStyle: "rgba(220, 240, 255, 0.8)", // Translucent light blue
+        fillStyle: "rgba(220, 240, 255, 0.6)", // Translucent light blue
         strokeStyle: "#ffffff",
         lineWidth: 1,
       },
