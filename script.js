@@ -6,6 +6,10 @@ const stdDeviation = [8, 10];
 const colorMatrix = ["15 -3", "30 -5"];
 
 window.addEventListener("DOMContentLoaded", () => {
+  const music = document.getElementById("music");
+  music.volume = 0.2;
+  music.play();
+
   const {
     Engine,
     Render,
@@ -251,8 +255,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   Events.on(runner, "tick", () => {
     const targetX = 1618;
-    const targetY = 350;
-    const threshold = 50;
+    const targetY = 450;
+    const threshold = 100;
 
     if (
       Math.abs(cup.cx - targetX) < threshold &&
